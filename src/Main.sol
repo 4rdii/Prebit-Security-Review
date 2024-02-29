@@ -208,6 +208,8 @@ contract MainPrebit is Ownable {
         public bitboxUsersAmounts;
 
     // Modifiers
+    // @audit this function being set manually/centralized can cause bugs and issues, deployer contract?
+
     modifier onlyOperator() {
         require(msg.sender == operatorAddress, "Not operator");
         _;
@@ -535,7 +537,6 @@ contract MainPrebit is Ownable {
      * @param openTimestamp The new open prediction timestamp for the prebit.
      * @param closeTimestamp The new close prediction timestamp for the prebit.
      */
-    // @audit this function being set manually/centralized can cause bugs and issues, deployer contract?
 
     function adjustTimestamp(
         uint256 _prebitId,
@@ -553,7 +554,6 @@ contract MainPrebit is Ownable {
      * This function calculates and sets the timestamps for the new prebit.
      */
     // @audit this function being set manually/centralized can cause bugs and issues, deployer contract?
-
     function startNextPrebit() external onlyOperator {
         require(
             (_prebits[currentPreBitId].status == Status.End),
@@ -708,6 +708,8 @@ contract MainPrebit is Ownable {
      * @param _price The final price for the prebit.
      * @param _batchSize The number of precards to process in each batch.
      */
+    // @audit this function gets the price of btc manually its neccessry  to use an oracle
+
     function executeDrawFinalPrice(
         uint256 _prebitId,
         uint256 _price,
