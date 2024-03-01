@@ -21,7 +21,7 @@ contract DeployPrebit is Script {
             PrebitBonusToken,
             Attacker
         )
-    //
+    
     {
         vm.startBroadcast();
 
@@ -37,11 +37,6 @@ contract DeployPrebit is Script {
             address(referrals)
         );
         PrebitBonusToken bounsToken = new PrebitBonusToken();
-        // mainPrebit args:
-        // address _payToken,
-        // address _referralContractAddress,
-        // address _contractInjector,
-        // address _bonusToken
         MainPrebit mainPrebit = new MainPrebit(
             address(tokenMock),
             address(referrals),
@@ -61,6 +56,6 @@ contract DeployPrebit is Script {
             address(bounsToken)
         );
         vm.stopBroadcast();
-        return (mainPrebit, referrals, tokenMock, bounsToken, attacker); //attacker
+        return (mainPrebit, referrals, tokenMock, bounsToken, attacker); 
     }
 }
