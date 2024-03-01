@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the deployment of the smart contracts for [Prebit.io](https://learn.prebit.io/docs/prebit-introduction), a trusted global hub for decentralized market projections. Prebit.io offers a secure, blockchain-based platform for predicting Bitcoin prices and rewards users for accurate and near-accurate predictions. The platform is designed to be user-friendly and easy to use.
+This repository contains the deployment of the smart contracts for [Prebit.io](https://learn.prebit.io/docs/prebit-introduction), a global hub for decentralized market projections. Prebit.io offers a secure, blockchain-based platform for predicting Bitcoin prices and rewards users for accurate and near-accurate predictions. The platform is designed to be user-friendly and easy to use.
 
 ## Project Details
 
