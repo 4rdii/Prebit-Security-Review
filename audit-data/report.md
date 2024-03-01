@@ -1,7 +1,7 @@
 ---
 title: Protocol Audit Report
 author: Ardeshir Gholami
-date: 27 feb 2024
+date: 3 march 2024
 header-includes:
   - \usepackage{titling}
   - \usepackage{graphicx}
@@ -11,14 +11,14 @@ header-includes:
     \centering
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\textwidth]{logo.pdf} 
+        \includegraphics[width=0.5\textwidth]{logo.png} 
     \end{figure}
     \vspace*{2cm}
     {\Huge\bfseries Protocol Audit Report\par}
     \vspace{1cm}
     {\Large Version 1.0\par}
     \vspace{2cm}
-    {\Large\itshape Cyfrin.io\par}
+    {\Large\itshape Ardeshir Gholami\par}
     \vfill
     {\large \today\par}
 \end{titlepage}
@@ -41,21 +41,25 @@ Prepared by: [Ardeshir Gholami](https://github.com/4rdii)
 - [Executive Summary](#executive-summary)
   - [Issues found](#issues-found)
 - [Findings](#findings)
-- [High](#high)
-    - [\[H-1\] Storing the password on-chain makes it visible to anyone](#h-1-storing-the-password-on-chain-makes-it-visible-to-anyone)
-    - [\[H-2\] `PasswordStore::setPassword` has no access controls, meaning a nonowner can change the password](#h-2-passwordstoresetpassword-has-no-access-controls-meaning-a-nonowner-can-change-the-password)
-- [Informational](#informational)
-    - [\[I-1\] `PasswordStore::getPassword` Function Misleading Comments](#i-1-passwordstoregetpassword-function-misleading-comments)
+  - [High](#high)
+    - [\[H-1\] Potential for Rug Pull via `MainPrebit::migrateToNewVersion` Function](#h-1-potential-for-rug-pull-via-mainprebitmigratetonewversion-function)
+    - [\[H-2\] Manual BTC Price Input Issue](#h-2-manual-btc-price-input-issue)
+  - [Medium](#medium)
+    - [\[M-1\] Manual Contract Deployment Issue](#m-1-manual-contract-deployment-issue)
+    - [\[M-2\] Manual Prebit Management Issue](#m-2-manual-prebit-management-issue)
 
 # Protocol Summary
 
 
-[Prebit Introduction](https://learn.prebit.io/docs/prebit-introduction)
-```Let's take a deep look into the platform
-PREBIT is a trusted global hub for decentralized market projections.
-It offers a secure, blockchain-based platform for predicting Bitcoin prices and rewards users for accurate and near-accurate predictions.
-The platform is very user-friendly and easy to use.
-```
+[Prebit Introduction:](https://learn.prebit.io/docs/prebit-introduction)
+
+>text
+>Let's take a deep look into the platform
+>PREBIT is a trusted global hub for decentralized market projections.
+>It offers a secure, blockchain-based platform for predicting Bitcoin prices and rewards users for accurate and near-accurate predictions.
+>The platform is very user-friendly and easy to use.
+
+
 This review is specifically tailored to the hourly price forecasting feature of the platform, which operates on the Binance Smart Chain and stands out among its binary (up or down) prediction counterpart.
 Because the project website did not provide the necessary information, and my search results did not yield any GitHub repositories for the project, the code used in the project directly comes from their deployed smart contracts on the Binance SmartChain. The addresses are as follows:
 
@@ -71,6 +75,7 @@ Because the project website did not provide the necessary information, and my se
 # Disclaimer
 
 I made all effort to find as many vulnerabilities in the code in the given time period, but hold no responsibilities for the findings provided in this document. A security audit by me is not an endorsement of the underlying business or product. The audit was time-boxed and the review of the code was solely on the security aspects of the Solidity implementation of the contracts.
+
 
 # Risk Classification
 
@@ -111,6 +116,7 @@ This summary outlines the key roles within the MainPrebit Contract ecosystem, hi
 # Executive Summary
 
 The security review of the Prebit.io smart contracts, particularly the `MainPrebit` smart contract, has identified critical vulnerabilities that pose significant risks to the protocol and its users. These vulnerabilities include the potential for a rug pull via the `migrateToNewVersion` function, the reliance on manual BTC price input, and issues related to manual contract deployment and prebit management. The findings underscore the importance of thorough security audits, the implementation of robust safeguards, and the adoption of automated systems to mitigate risks associated with smart contracts. Addressing these vulnerabilities is crucial for enhancing the security posture of Prebit.io, building trust with its users, and ensuring the long-term sustainability and success of its platform.
+
 ## Issues found
 
 | Severity | number of issues found |
