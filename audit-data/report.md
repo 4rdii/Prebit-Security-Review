@@ -33,6 +33,7 @@ Prepared by: [Ardeshir Gholami](https://github.com/4rdii)
 # Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Protocol Summary](#protocol-summary)
+  - [CashFlow Data of different versions](#cashflow-data-of-different-versions)
 - [Disclaimer](#disclaimer)
 - [Risk Classification](#risk-classification)
 - [Audit Details](#audit-details)
@@ -71,6 +72,20 @@ Because the project website did not provide the necessary information, and my se
   - This represents the older version of the MainPrebit SmartContract. It serves as the input argument for the newer version, facilitating the migration of remaining funds to the updated version.
 - Precard bonus Token: [`0xdf1a5FaA82D6d61f86D1dF4fa777Ef597bF69080`]
   - This contract defines the precard bonus token.
+## CashFlow Data of different versions
+Tese cash folows are from different versions of the mainPrebit smartcontract deployed to bsc smartchain. you can get them your self using the cashflow.py script.
+
+| contrct address                            | cash flow in | Version                          |
+| ------------------------------------------ | ------------ | -------------------------------- |
+| 0x287437eE50bF2a246282c5fCB7Dc8107F47Fda6c | 57488.63     | 0.2                              |
+| 0xC741c91f932ec082f69B8C18C0e36fc7c7736D07 | 64064.55     | 0.2                              |
+| 0xE879Ee3949C3d1e2B19fA7B8A56ac7b8bc6b9B11 | 59427.22     | 0.2                              |
+| 0xa76054807Dd4Bb25EBA12622fe1fD746fE948a73 | 41301.93     | 0.2                              |
+| 0xcf26A30EA2c226207C30B9a0a6E43a6a6bbbcE89 | 5476.72      | 0.2                              |
+| 0x9a8AE3Be63Fc293ce1bC934010DcD0132B6585B0 | 0            | Version0.1 no cash flow recorded |
+| Total                                      | 227759.05    | -                                |
+
+
 
 # Disclaimer
 
